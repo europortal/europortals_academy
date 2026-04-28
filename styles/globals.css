@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans text-[#4A5568] text-base bg-white antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-[#F0A500] hover:bg-[#d99400] text-[#0B1F3A] font-bold px-8 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#0B1F3A] font-bold px-8 py-3 rounded-xl transition-all duration-200;
+  }
+  .btn-blue {
+    @apply inline-flex items-center justify-center gap-2 bg-[#1A4FDB] hover:bg-[#1642c4] text-white font-bold px-8 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+  .section-title {
+    @apply font-display text-4xl md:text-5xl font-extrabold tracking-tight text-[#0B1F3A] leading-tight;
+  }
+  .section-sub {
+    @apply text-lg text-[#4A5568] max-w-2xl mx-auto leading-relaxed;
+  }
+  .card {
+    @apply bg-white rounded-2xl border border-[#DDE3EE] shadow-sm hover:shadow-lg hover:border-slate-300 transition-all duration-200 p-7;
+  }
+  .badge {
+    @apply inline-block text-[11px] font-bold tracking-[0.15em] uppercase text-[#1A4FDB] bg-[#EEF3FF] px-3 py-1 rounded-full;
+  }
+}
+
+/* Animated gradient hero background */
+.hero-bg {
+  background: #0B1F3A;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #1A3060 0%, transparent 60%);
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* Diagonal divider */
+.diagonal-divider {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.diagonal-divider-bottom {
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Floating WhatsApp button */
+.whatsapp-btn {
+  @apply fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-transform duration-200 hover:scale-110;
+  background: #25d366;
+}
+.call-btn {
+  @apply fixed bottom-24 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-transform duration-200 hover:scale-110;
+  background: #1A4FDB;
+}
+
+/* Removed glassmorphism - solid white fallback */
+.glass-card {
+  @apply bg-white rounded-2xl border border-[#DDE3EE] shadow-sm;
+}
+
+/* Number counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.count-item {
+  animation: countUp 0.8s ease forwards;
+}
