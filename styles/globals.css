@@ -8,6 +8,7 @@
   html {
     scroll-behavior: smooth;
   }
+
   body {
     @apply font-sans text-[#4A5568] text-base bg-white antialiased;
   }
@@ -17,21 +18,27 @@
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 bg-[#F0A500] hover:bg-[#d99400] text-[#0B1F3A] font-bold px-8 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg;
   }
+
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#0B1F3A] font-bold px-8 py-3 rounded-xl transition-all duration-200;
   }
+
   .btn-blue {
     @apply inline-flex items-center justify-center gap-2 bg-[#1A4FDB] hover:bg-[#1642c4] text-white font-bold px-8 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg;
   }
+
   .section-title {
     @apply font-display text-4xl md:text-5xl font-extrabold tracking-tight text-[#0B1F3A] leading-tight;
   }
+
   .section-sub {
     @apply text-lg text-[#4A5568] max-w-2xl mx-auto leading-relaxed;
   }
+
   .card {
     @apply bg-white rounded-2xl border border-[#DDE3EE] shadow-sm hover:shadow-lg hover:border-slate-300 transition-all duration-200 p-7;
   }
+
   .badge {
     @apply inline-block text-[11px] font-bold tracking-[0.15em] uppercase text-[#1A4FDB] bg-[#EEF3FF] px-3 py-1 rounded-full;
   }
@@ -43,6 +50,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .hero-bg::before {
   content: "";
   position: absolute;
@@ -64,6 +72,7 @@
 .diagonal-divider {
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
+
 .diagonal-divider-bottom {
   clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
 }
@@ -73,6 +82,7 @@
   @apply fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-transform duration-200 hover:scale-110;
   background: #25d366;
 }
+
 .call-btn {
   @apply fixed bottom-24 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-transform duration-200 hover:scale-110;
   background: #1A4FDB;
@@ -85,9 +95,314 @@
 
 /* Number counter animation */
 @keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .count-item {
   animation: countUp 0.8s ease forwards;
 }
+
+/* ─── Unmatched Placements Section ───────────────────────── */
+.placements-section {
+  position: relative;
+  background: linear-gradient(180deg, #0B1F3A 0%, #0e234a 40%, #101e3e 100%);
+  padding: 0 0 80px;
+  overflow: hidden;
+}
+
+/* Fade in from hero (top) */
+.placements-fade-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(180deg, #0B1F3A 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Fade out into next section (bottom) */
+.placements-fade-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(0deg, #FFFFFF 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Decorative dot-grid overlay — matches hero feel */
+.placements-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+/* Gold glow orb */
+.placements-section::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 165, 0, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.placements-inner {
+  position: relative;
+  z-index: 3;
+  padding-top: 80px;
+}
+
+/* Header */
+.placements-header {
+  text-align: center;
+  margin-bottom: 52px;
+  padding: 0 16px;
+}
+
+.placements-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #F0A500;
+  background: rgba(240, 165, 0, 0.12);
+  border: 1px solid rgba(240, 165, 0, 0.3);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  margin-bottom: 16px;
+}
+
+.placements-title {
+  font-family: var(--font-display, 'Bricolage Grotesque', sans-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.placements-title-accent {
+  background: linear-gradient(90deg, #F0A500, #FFD166);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.placements-sub {
+  color: #94a3b8;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Marquee ──────────────────────────────────── */
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  /* left & right fade masks */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  margin-bottom: 18px;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  will-change: transform;
+}
+
+@keyframes marquee-ltr {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.3333%);
+  }
+}
+
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(-33.3333%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-ltr {
+  animation: marquee-ltr 28s linear infinite;
+}
+
+.marquee-rtl {
+  animation: marquee-rtl 32s linear infinite;
+}
+
+.marquee-wrapper:hover .marquee-ltr,
+.marquee-wrapper:hover .marquee-rtl {
+  animation-play-state: paused;
+}
+
+/* ── Placement Card ────────────────────────────── */
+.placement-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 28px 32px;
+  min-width: 440px;
+  max-width: 440px;
+  min-height: 160px;
+  cursor: default;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+  flex-shrink: 0;
+}
+
+.placement-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(240, 165, 0, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(240, 165, 0, 0.12);
+}
+
+/* "PLACED" ribbon */
+.placement-badge {
+  position: absolute;
+  top: 8px;
+  right: -1px;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0B1F3A;
+  background: #F0A500;
+  padding: 3px 8px 3px 6px;
+  border-radius: 4px 0 0 4px;
+  box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.placement-badge::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 100%;
+  border-style: solid;
+  border-width: 0 6px 5px 0;
+  border-color: transparent #c8860a transparent transparent;
+}
+
+.placement-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.05em;
+}
+
+.placement-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.placement-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.placement-role {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.placement-company {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #F0A500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── CTA ───────────────────────────────────────── */
+.placements-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+}
+
+.placements-see-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #1A4FDB, #2563EB);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 36px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(26, 79, 219, 0.4);
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+  letter-spacing: 0.02em;
+}
+
+.placements-see-more:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(26, 79, 219, 0.55);
+  background: linear-gradient(135deg, #1642c4, #1d4ed8);
+}
+
+
+.placement-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cleaned up duplicate .placement-card rule */

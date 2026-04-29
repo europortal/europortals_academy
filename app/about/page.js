@@ -50,35 +50,41 @@ export default function AboutPage() {
       {/* ── INTRO ─────────────────────────────────────── */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="badge mb-3">Who We Are</span>
-            <h2 className="section-title mt-4 mb-6">
-              A Decade of Shaping <span className="text-[#1A4FDB]">Careers</span>
-            </h2>
-            <p className="text-[#4A5568] leading-7 mb-4 text-base">
-              Europortals Academy is a leading educational institute in Kerala dedicated to providing practical, job-oriented computer courses and skill development programs. We believe education should directly translate to employment.
-            </p>
-            <p className="text-[#4A5568] leading-7 mb-4 text-base">
-              Our faculty comprises experienced industry professionals who bring real-world insights into every classroom session. From basic computer literacy to advanced technical skills, we offer a comprehensive curriculum designed for today&apos;s job market.
-            </p>
-            <p className="text-[#4A5568] leading-7 text-base">
-              Beyond training, we provide end-to-end support — from admission guidance to placement — ensuring every student achieves their career goals.
-            </p>
-          </div>
+          <div className="flex flex-col gap-8">
+            <div>
+              <span className="badge mb-3">Who We Are</span>
+              <h2 className="section-title mt-4 mb-6">
+                A Decade of Shaping <span className="text-[#1A4FDB]">Careers</span>
+              </h2>
+              <p className="text-[#4A5568] leading-7 mb-4 text-base">
+                Europortals Academy is a leading educational institute in Kerala dedicated to providing practical, job-oriented computer courses and skill development programs. We believe education should directly translate to employment.
+              </p>
+              <p className="text-[#4A5568] leading-7 mb-4 text-base">
+                Our faculty comprises experienced industry professionals who bring real-world insights into every classroom session. From basic computer literacy to advanced technical skills, we offer a comprehensive curriculum designed for today&apos;s job market.
+              </p>
+              <p className="text-[#4A5568] leading-7 text-base">
+                Beyond training, we provide end-to-end support — from admission guidance to placement — ensuring every student achieves their career goals.
+              </p>
+            </div>
 
-          {/* Stats card */}
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { n: "2000+", l: "Students Trained",   c: "bg-[#1A4FDB]" },
-              { n: "95%",   l: "Placement Rate",      c: "bg-[#0B1F3A]" },
-              { n: "30+",   l: "Courses Offered",     c: "bg-[#0B1F3A]" },
-              { n: "50+",   l: "Hiring Partners",     c: "bg-[#0B1F3A]" },
-            ].map((s) => (
-              <div key={s.l} className={`${s.c} text-white rounded-2xl p-6 text-center shadow-sm`}>
-                <p className="font-display text-3xl font-extrabold">{s.n}</p>
-                <p className="text-sm mt-1 text-slate-300 font-medium">{s.l}</p>
-              </div>
-            ))}
+            {/* Stats card */}
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { n: "2000+", l: "Students Trained",   c: "bg-[#1A4FDB]" },
+                { n: "95%",   l: "Placement Rate",      c: "bg-[#0B1F3A]" },
+                { n: "30+",   l: "Courses Offered",     c: "bg-[#0B1F3A]" },
+                { n: "50+",   l: "Hiring Partners",     c: "bg-[#0B1F3A]" },
+              ].map((s) => (
+                <div key={s.l} className={`${s.c} text-white rounded-2xl p-6 text-center shadow-sm`}>
+                  <p className="font-display text-3xl font-extrabold">{s.n}</p>
+                  <p className="text-sm mt-1 text-slate-300 font-medium">{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="relative rounded-2xl overflow-hidden shadow-xl h-[100%] min-h-[500px]">
+             <img src="/images/about/students.png" alt="Students learning" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </div>
       </section>
@@ -190,10 +196,10 @@ export default function AboutPage() {
             <h2 className="section-title mt-4 mb-6">Our Expert Team</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-            {team.map((t) => (
-              <div key={t.name} className="card text-center p-7">
-                <div className={`w-16 h-16 ${t.color} rounded-2xl flex items-center justify-center mx-auto mb-4 font-bold text-white text-lg`}>
-                  {t.initials}
+            {team.map((t, idx) => (
+              <div key={t.name} className="card text-center p-7 flex flex-col items-center group">
+                <div className={`w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-lg mb-4 transform transition-transform group-hover:scale-110`}>
+                  <img src={`/images/testimonials/${idx === 0 ? 'aisha' : idx === 1 ? 'farhan' : idx === 2 ? 'priya' : 'aisha'}.png`} alt={t.name} className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-bold text-lg text-[#0B1F3A]">{t.name}</h3>
                 <p className="text-[#4A5568] text-sm mt-1 leading-7">{t.role}</p>

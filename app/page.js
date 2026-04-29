@@ -1,5 +1,6 @@
 import Link from "next/link";
 import EnquiryForm from "../components/EnquiryForm";
+import PlacementsScroll from "../components/PlacementsScroll";
 
 export const metadata = {
   title: "Europortals Academy | Computer Courses & Job Placement in Kerala",
@@ -60,21 +61,21 @@ const testimonials = [
     role: "Data Entry Executive, Kozhikode",
     quote:
       "Europortals Academy completely changed my career. The practical approach and placement support helped me land my first job within a month of completing the course!",
-    initials: "AR",
+    image: "/images/testimonials/aisha.png",
   },
   {
     name: "Mohammed Farhan",
     role: "Web Developer, Bengaluru",
     quote:
       "The Web Development course here is outstanding. The trainers are industry professionals who teach you real-world skills, not just theory. Highly recommended!",
-    initials: "MF",
+    image: "/images/testimonials/farhan.png",
   },
   {
     name: "Priya Nair",
     role: "Digital Marketer, Kochi",
     quote:
       "I enrolled for the Digital Marketing course while in my final year and got placed before graduation. The academy's guidance and mock interviews were invaluable.",
-    initials: "PN",
+    image: "/images/testimonials/priya.png",
   },
 ];
 
@@ -124,6 +125,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── UNMATCHED PLACEMENTS ─────────────────────────────── */}
+      <PlacementsScroll />
+
       {/* ── STATS BAR ─────────────────────────────────── */}
       <section className="bg-[#FFFFFF] border-y border-slate-100 shadow-sm py-8">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -163,35 +167,47 @@ export default function HomePage() {
       {/* ── WHY CHOOSE US ─────────────────────────────── */}
       <section className="py-24 bg-white" id="why-us">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left text */}
-            <div>
-              <span className="badge mb-3">Why Europortals</span>
-              <h2 className="section-title mt-4 mb-6">
-                Built for Your <span className="text-[#1A4FDB]">Career Success</span>
-              </h2>
-              <p className="text-[#4A5568] text-base leading-7 mb-8">
-                We don't just teach — we mentor, guide, and support every student until they find the right opportunity. Our results speak for themselves.
-              </p>
-              <Link href="/about" className="btn-blue text-base">
-                Learn More About Us →
-              </Link>
+          <div className="text-center mb-16">
+            <span className="badge mb-3">Why Europortals</span>
+            <h2 className="section-title mt-4 mb-6">
+              Built for Your <span className="text-[#1A4FDB]">Career Success</span>
+            </h2>
+            <p className="text-[#4A5568] text-base leading-7 max-w-2xl mx-auto">
+              We don't just teach — we mentor, guide, and support every student until they find the right opportunity. Our results speak for themselves.
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px]">
+              <img src="/images/about/lab.png" alt="Students in Lab" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/80 to-transparent flex items-end p-8">
+                <div className="text-white">
+                  <h3 className="font-display font-bold text-2xl mb-2">Modern Infrastructure</h3>
+                  <p className="text-slate-200 text-sm">State-of-the-art labs and interactive classrooms for an immersive learning experience.</p>
+                </div>
+              </div>
             </div>
 
             {/* Right grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {whyUs.map((w) => (
-                <div key={w.title} className="bg-white border border-[#DDE3EE] rounded-xl p-5 hover:border-l-4 hover:border-[#1A4FDB] transition-all duration-200">
-                  <div className="flex gap-4">
-                    <div className="text-2xl flex-shrink-0 bg-[#EEF3FF] rounded-lg p-2 flex items-center justify-center">{w.icon}</div>
+                <div key={w.title} className="bg-white border border-[#DDE3EE] rounded-xl p-5 hover:border-l-4 hover:border-[#1A4FDB] hover:shadow-md transition-all duration-200">
+                  <div className="flex flex-col gap-3">
+                    <div className="text-2xl w-12 h-12 bg-[#EEF3FF] rounded-lg flex items-center justify-center">{w.icon}</div>
                     <div>
                       <h3 className="font-bold text-lg text-[#0B1F3A] mb-1">{w.title}</h3>
-                      <p className="text-[#4A5568] text-sm leading-7 mt-1">{w.desc}</p>
+                      <p className="text-[#4A5568] text-sm leading-6">{w.desc}</p>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
+          </div>
+          <div className="text-center mt-12">
+            <Link href="/about" className="btn-blue text-base">
+              Learn More About Us →
+            </Link>
           </div>
         </div>
       </section>
@@ -299,9 +315,7 @@ export default function HomePage() {
             {testimonials.map((t) => (
               <div key={t.name} className="bg-white rounded-2xl border border-white/20 p-6 shadow-sm">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-11 h-11 rounded-full bg-[#F0A500] flex items-center justify-center font-bold text-[#0B1F3A] text-sm flex-shrink-0">
-                    {t.initials}
-                  </div>
+                  <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover border-2 border-[#F0A500] flex-shrink-0" />
                   <div>
                     <p className="text-white font-semibold text-sm">{t.name}</p>
                     <p className="text-slate-400 text-xs">{t.role}</p>
