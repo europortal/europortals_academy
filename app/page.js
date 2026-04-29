@@ -197,36 +197,88 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED COURSES ──────────────────────────── */}
-      <section className="py-24 bg-[#F0F5FF]" id="courses">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="badge mb-3">Popular Programs</span>
-            <h2 className="section-title mt-4 mb-6">Featured Courses</h2>
-            <p className="section-sub">
-              Job-oriented courses with industry-recognised certificates.
+      <section className="py-28 relative bg-gradient-to-br from-[#0D1B2A] via-[#112240] to-[#0a192f] overflow-hidden" id="courses">
+        {/* Floating particle or dot-grid background */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#F0A500 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }}></div>
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+          <div className="absolute top-[10%] -left-[5%] w-[40%] h-[40%] rounded-full bg-[#1A4FDB]/20 blur-[120px]"></div>
+          <div className="absolute top-[60%] right-[10%] w-[30%] h-[30%] rounded-full bg-[#F0A500]/15 blur-[100px]"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-16 max-w-3xl mx-auto animate-[fadeIn_1s_ease-out]">
+            <span className="inline-block text-[#F0A500] text-xs font-bold tracking-[0.2em] uppercase mb-4 bg-[#F0A500]/10 border border-[#F0A500]/30 px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(240,165,0,0.3)]">
+              Popular Programs
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight mb-6">
+              Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F0A500] to-yellow-300">Courses</span>
+            </h2>
+            <p className="text-lg text-slate-400 leading-relaxed">
+              Job-oriented courses with industry-recognised certificates. Upgrade your skills and jumpstart your career.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-            {featuredCourses.map((c) => (
-              <div key={c.name} className="card flex gap-4 items-start">
-                <div className="text-3xl flex-shrink-0 bg-[#EEF3FF] rounded-xl p-3 flex items-center justify-center">{c.icon}</div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-[#0B1F3A] text-lg mb-2">{c.name}</h3>
-                  <div className="flex gap-2 flex-wrap">
-                    <span className="text-xs bg-[#EEF3FF] text-[#1A4FDB] border border-blue-100 px-2.5 py-0.5 rounded-full">
-                      ⏱ {c.duration}
-                    </span>
-                    <span className={`text-xs px-2.5 py-0.5 rounded-full border ${c.level === 'Beginner' ? 'bg-[#F0FDF4] text-[#15803D] border-green-100' : c.level === 'Intermediate' ? 'bg-[#EEF3FF] text-[#1A4FDB] border-blue-100' : 'bg-purple-100 text-purple-700 border-purple-200'}`}>
-                      {c.level}
-                    </span>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            {featuredCourses.map((c, index) => {
+              const gradients = [
+                "from-pink-500 to-rose-500",
+                "from-cyan-400 to-blue-500",
+                "from-violet-500 to-purple-500",
+                "from-emerald-400 to-teal-500",
+                "from-amber-400 to-orange-500",
+                "from-indigo-400 to-blue-600"
+              ];
+              const gradient = gradients[index % gradients.length];
+              
+              return (
+                <div 
+                  key={c.name} 
+                  className="group bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 hover:border-[#F0A500]/50 hover:shadow-[0_0_30px_rgba(240,165,0,0.15)] hover:scale-[1.03] transition-all duration-300 flex flex-col h-full relative overflow-hidden cursor-pointer"
+                >
+                  {/* Background Accent on Hover */}
+                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${gradient} rounded-bl-full -mr-8 -mt-8 transition-transform duration-500 group-hover:scale-150 opacity-20`}></div>
+                  
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${gradient} text-white rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-lg border border-white/20 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
+                      {c.icon}
+                    </div>
+                    
+                    <h3 className="font-display font-bold text-[1.4rem] leading-tight text-white mb-4 group-hover:text-[#F0A500] transition-colors duration-200">
+                      {c.name}
+                    </h3>
+                    
+                    <div className="flex gap-3 flex-wrap mb-8">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-white/10 text-slate-300 border border-white/10 px-3 py-1.5 rounded-full">
+                        <svg className="w-3.5 h-3.5 text-[#F0A500]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        {c.duration}
+                      </span>
+                      <span className={`inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full border ${
+                        c.level === 'Beginner' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' : 
+                        c.level === 'Intermediate' ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' : 
+                        'bg-purple-500/20 text-purple-300 border-purple-500/30'
+                      }`}>
+                        {c.level}
+                      </span>
+                    </div>
+
+                    <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-between">
+                      <span className="text-sm font-bold text-[#F0A500] group-hover:text-yellow-300 transition-colors">
+                        Course Details
+                      </span>
+                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-[#F0A500] group-hover:bg-[#F0A500] group-hover:text-[#0D1B2A] transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(240,165,0,0.5)]">
+                        <svg className="w-5 h-5 transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
-          <div className="text-center mt-12">
-            <Link href="/courses" className="btn-blue text-base">
-              View All Courses →
+          
+          <div className="text-center mt-16 animate-[fadeIn_1s_ease-out_0.5s_both]">
+            <Link href="/courses" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#F0A500] to-amber-500 hover:from-amber-400 hover:to-yellow-500 text-[#0B1F3A] font-bold px-10 py-4 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(240,165,0,0.4)] hover:shadow-[0_0_30px_rgba(240,165,0,0.6)] group text-lg">
+              View All Courses 
+              <svg className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </Link>
           </div>
         </div>
